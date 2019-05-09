@@ -1,15 +1,35 @@
+//intialise variables
 let userChoice;
 let answers = ["rock", "paper", "scissors", "cat"];
 let computerChoice = "";
-let choices = document.getElementsByClassName("choice");
-let cat = document.getElementById("cat");
 let result = "";
-let winner = document.getElementById("winner");
-let myAudio = document.getElementById("myAudio");
-myAudio.addEventListener("canplaythrough", function(){myAudio.play()});
-cat.addEventListener("click", userPick);
-for (let i = 0; i < choices.length; i++) {
-    choices[i].addEventListener("click", userPick);
+let choices;
+let cat;
+let winner;
+let myAudio;
+let gameAnswer;
+
+setupInput();
+
+function setupInput() {
+    choices = document.getElementsByClassName("choice");
+    cat = document.getElementById("cat");
+    winner = document.getElementById("winner");
+    myAudio = document.getElementById("myAudio");
+    myAudio.addEventListener("canplaythrough", function(){myAudio.play()});
+    cat.addEventListener("click", userPick);
+    for (let i = 0; i < choices.length; i++) {
+        choices[i].addEventListener("click", userPick);
+    }
+}
+
+
+function displayOutput()
+{
+    if (userChoice =="cat") {
+        myAudio.src = "Catmeow1.mp3";
+    }
+    winner.innerHTML = gameAnswer;
 }
 
 function userPick(evt) {
@@ -18,16 +38,12 @@ function userPick(evt) {
     playGame();
 }
 
-
 function playGame() {
-    
-    computerChoice = answers[Math.floor(Math.random() * 3)];
+computerChoice = answers[Math.floor(Math.random() * 3)];
     console.log(computerChoice);
-
 
     if (userChoice == "cat") {
         result = "meow meow meow MEOW"
-
     }
 
     if (userChoice == computerChoice) {
@@ -51,15 +67,11 @@ function playGame() {
             result = "the computer wins, as rock blunts scissors!!"
         }
     } 
+
+    gameAnswer = `User picked ${userChoice} , computer picked ${computerChoice} - ${result}`;
   
-displayWinner();
+displayOutput();
 }
 
-function displayWinner()
-{
-    if (userChoice =="cat") {
-        myAudio.src = "Catmeow1.mp3";
-    }
-    winner.innerHTML = `User picked ${userChoice} , computer picked ${computerChoice} - ${result}`;
-}
+
     
