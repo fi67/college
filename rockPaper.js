@@ -2,7 +2,7 @@ let userChoice;
 let answers = ["rock", "paper", "scissors", "cat"];
 let computerChoice;
 let choices = document.getElementsByClassName("choice");
-let cat= getElementById("cat");
+let cat = document.getElementById("cat");
 cat.addEventListener("click", playGame);
 for (let i = 0; i < choices.length; i++) {
     choices[i].addEventListener("click", playGame);
