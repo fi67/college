@@ -5,7 +5,7 @@ let choices = document.getElementsByClassName("choice");
 let cat = document.getElementById("cat");
 let result = "";
 let winner = document.getElementById("winner");
-cat.addEventListener("click", playGame);
+cat.addEventListener("click", userPick);
 for (let i = 0; i < choices.length; i++) {
     choices[i].addEventListener("click", userPick);
 }
