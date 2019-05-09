@@ -1,8 +1,9 @@
 let userChoice;
 let answers = ["rock", "paper", "scissors", "cat"];
-let computerChoice;
+let computerChoice = "";
 let choices = document.getElementsByClassName("choice");
 let cat = document.getElementById("cat");
+let result = "";
 cat.addEventListener("click", playGame);
 for (let i = 0; i < choices.length; i++) {
     choices[i].addEventListener("click", playGame);
