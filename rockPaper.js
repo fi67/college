@@ -6,7 +6,7 @@ let cat = document.getElementById("cat");
 let result = "";
 let winner = document.getElementById("winner");
 let myAudio = document.getElementById("myAudio");
-myAudio.addEventListener("oncanplaythrough", function(){myAudio.play()});
+myAudio.addEventListener("canplaythrough", function(){myAudio.play()});
 cat.addEventListener("click", userPick);
 for (let i = 0; i < choices.length; i++) {
     choices[i].addEventListener("click", userPick);
