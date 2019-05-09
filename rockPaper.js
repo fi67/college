@@ -5,6 +5,8 @@ let choices = document.getElementsByClassName("choice");
 let cat = document.getElementById("cat");
 let result = "";
 let winner = document.getElementById("winner");
+let myAudio = document.getElementById("myAudio");
+myAudio.addEventListener("oncanplaythrough", function(){myAudio.play()});
 cat.addEventListener("click", userPick);
 for (let i = 0; i < choices.length; i++) {
     choices[i].addEventListener("click", userPick);
@@ -25,6 +27,7 @@ function playGame() {
 
     if (userChoice == "cat") {
         result = "meow meow meow MEOW"
+
     }
 
     if (userChoice == computerChoice) {
@@ -54,6 +57,9 @@ displayWinner();
 
 function displayWinner()
 {
+    if (userChoice =="cat") {
+        myAudio.src = "Catmeow1.mp3";
+    }
     winner.innerHTML = `User picked ${userChoice} , computer picked ${computerChoice} - ${result}`;
 }
     
