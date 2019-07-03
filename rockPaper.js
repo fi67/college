@@ -5,6 +5,7 @@ let computerChoice = "";
 let result = "";
 let choices;
 let cat;
+let catState;
 let winner;
 let myAudio;
 let gameAnswer;
@@ -26,9 +27,7 @@ function setupInput() {
 
 function displayOutput()
 {
-    if (userChoice =="cat") {
-        myAudio.src = "Catmeow1.mp3";
-    }
+
     winner.innerHTML = gameAnswer;
 }
 
@@ -39,15 +38,32 @@ function userPick(evt) {
 }
 
 function playGame() {
-computerChoice = answers[Math.floor(Math.random() * 3)];
+    computerChoice = answers[Math.floor(Math.random() * 4)];
     console.log(computerChoice);
-
-    if (userChoice == "cat") {
-        result = "meow meow meow MEOW"
-    }
 
     if (userChoice == computerChoice) {
         result = "it's a draw!"
+    } else if ((userChoice == "cat") || (computerChoice =="cat")) {
+        catState = Math.floor(Math.random() * 2)
+        console.log(catState)
+        
+        if (userChoice == "cat") {
+            if (catState == 0) {
+                result = "The user picked angry cat! The computer wins!"
+                myAudio.src = "AngryCat.mp3";
+            } else {
+                result = "The user picked happy cat! The user wins!"
+                myAudio.src = "Catmeow1.mp3";
+            }
+        } else {
+            if (catState == 0) {
+                result = "The computer picked angry cat! The user wins!"
+                myAudio.src = "AngryCat.mp3";
+            } else {
+                result = "The computer picked happy cat! The computer wins!"
+                myAudio.src = "Catmeow1.mp3";
+            }
+        }
     } else if (userChoice =="rock") {
         if (computerChoice =="scissors") {
             result ="you win, as rock blunts scissors!"
@@ -69,7 +85,7 @@ computerChoice = answers[Math.floor(Math.random() * 3)];
     } 
 
     gameAnswer = `User picked ${userChoice} , computer picked ${computerChoice} - ${result}`;
-  
+    
 displayOutput();
 }
 
