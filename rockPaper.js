@@ -83,13 +83,14 @@ function playGame() {
    if ((userChoice === "cat") || (computerChoice =="cat")) {
     let myAudio = document.getElementById("myAudio");
     let myCatAudio = "";
-    myAudio.addEventListener("canplaythrough", function(){myAudio.play()});
+    
      if (catState === 1) {
         myCatAudio = "Catmeow1.mp3";
      } else if (catState === 0) {
         myCatAudio = "AngryCat.mp3";
      }
     myAudio.src = myCatAudio;
+      myAudio.addEventListener("canplaythrough", function(){myAudio.play()});
    }
   
   
