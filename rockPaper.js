@@ -1,5 +1,6 @@
 //intialise variables
 let userChoice;
+ let gameAnswer;
 
 setupInput();
 
@@ -31,7 +32,7 @@ function playGame() {
     let computerChoice = answers[Math.floor(Math.random() * 4)];
     console.log(computerChoice);
     let result="";
-    let gameAnswer;
+
     
     if (userChoice == computerChoice) {
         result = "it's a draw!"
@@ -85,9 +86,7 @@ function playGame() {
     //web only output to screen
     let winner = document.getElementById("winner");
     winner.innerHTML = gameAnswer;
-    
-
-}
+  }
 
 
     
