@@ -1,6 +1,6 @@
 //intialise variables
 let userChoice;
-let gameAnswer;
+
 setupInput();
 
 function setupInput() {
@@ -13,13 +13,7 @@ function setupInput() {
     for (let i = 0; i < choices.length; i++) {
         choices[i].addEventListener("click", userPick);
     }
-}
 
-
-function displayOutput()
-{
-    let winner = document.getElementById("winner");
-    winner.innerHTML = gameAnswer;
 }
 
 function userPick(evt) {
@@ -29,7 +23,7 @@ function userPick(evt) {
 }
 
 function playGame() {
-    // web only
+    // web only - all things to do with myAudio
     let myAudio = document.getElementById("myAudio");
     myAudio.addEventListener("canplaythrough", function(){myAudio.play()});
     
@@ -37,10 +31,12 @@ function playGame() {
     let computerChoice = answers[Math.floor(Math.random() * 4)];
     console.log(computerChoice);
     let result="";
+    let gameAnswer;
     
     if (userChoice == computerChoice) {
         result = "it's a draw!"
     } else if ((userChoice == "cat") || (computerChoice =="cat")) {
+            
         let catState = Math.floor(Math.random() * 2);
         console.log(catState);
         
@@ -86,10 +82,11 @@ function playGame() {
         } else {
         gameAnswer = `User picked ${userChoice} , computer picked ${computerChoice} - ${result}`;
     }
-       
+    //web only output to screen
+    let winner = document.getElementById("winner");
+    winner.innerHTML = gameAnswer;
     
-    
-displayOutput();
+
 }
 
 
