@@ -26,9 +26,8 @@ function userPick(evt) {
 
 function playGame() {
    // web only - all things to do with myAudio
-   let myAudio = document.getElementById("myAudio");
-   myAudio.addEventListener("canplaythrough", function(){myAudio.play()});
-   let myCatAudio = "";
+   
+
    let answers = ["rock", "paper", "scissors", "cat"];
    let computerChoice = answers[Math.floor(Math.random() * 4)];
    console.log(computerChoice);
@@ -82,12 +81,15 @@ function playGame() {
        gameAnswer = `User picked ${userChoice} , computer picked ${computerChoice} - ${result}`;
    }
    if ((userChoice === "cat") || (computerChoice =="cat")) {
+    let myAudio = document.getElementById("myAudio");
+    let myCatAudio = "";
+    myAudio.addEventListener("canplaythrough", function(){myAudio.play()});
      if (catState === 1) {
         myCatAudio = "Catmeow1.mp3";
      } else if (catState === 0) {
         myCatAudio = "AngryCat.mp3";
      }
-
+    myAudio.src = myCatAudio;
    }
   
   
@@ -95,6 +97,3 @@ function playGame() {
    let winner = document.getElementById("winner");
    winner.innerHTML = gameAnswer;
  }
-
-
-    
